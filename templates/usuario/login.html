@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block index %} 
+
+
+<form id="formulario" method="POST">
+{% csrf_token %}
+  <div class="form-row">
+    <div class="col">
+      <label>UserName:</label>{{form.username}}
+    </div>
+    <div class="col">
+     <label>Contraseña:</label> {{form.password}}
+     <button class="btn btn-primary" type="submit">Enviar</button>
+    </div>
+  </div>
+</form>
+
+{% endblock index %}

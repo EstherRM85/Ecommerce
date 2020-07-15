@@ -1,0 +1,47 @@
+{% extends 'app/base.html' %} {% load static %} {% block index %}
+
+<div id="tavlaun" class="card">
+    <div class="card-header">
+        <strong class="card-title">Listado de Productos</strong>
+    </div>
+    <div class="table-stats order-table ov-h">
+        <table class="table">
+            <thead>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>total</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in carro %}
+                    <!--esta info la manda la vista-->
+                    <tr>
+                        <td>{{ c.id_producto.id }}</td>
+                        <td>{{ c.id_producto.nombre }}</td>
+                        <td>{{ c.id_producto.descripcion}}</td>
+                        <td>{{ c.id_producto.precio }}</td>
+                        <td>{{ c.cantidad }}</td>
+                        <td>{{c.total}}</td>
+                        <td><img class="imagep" src="{% static c.id_producto.image.url  %}">
+                            <td><button class="btn btn-danger" type="button"><a style="color:white;"  href="{% url 'app:eliminar' c.id %}">Eliminar</a></button></td>
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+        </table>
+        <div id="botoncomp">
+            <a class="btn btn-success" style="color:white; background-color: #EC6907;" href="{% url 'app:pagar' %}">Comprar</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %} {% load static %} {% block index %}
+
+<div id="tavlaun" class="card">
+    <div class="card-header">
+        <strong class="card-title">Listado de Productos</strong>
+    </div>
+    <div class="table-stats order-table ov-h">
+        <table class="table">
+            <thead>
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in product %}
+                    <!--esta info la manda la vista-->
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.descripcion}}</td>
+                        <td>{{ p.precio }}</td>
+                        <td><img class="imagep" src="{% static p.image.url  %}"></td>
+                        <td>
+                            <form action="{% url 'app:agregar' p.id %}" method="POST">
+                                {% csrf_token %}
+                                <input type="number" name="cantidad">
+                                <button class="btn btn-primary" type="submit">Agregar Carro</button>
+
+                            </form>
+
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+{% endblock index %}

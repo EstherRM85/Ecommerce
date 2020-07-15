@@ -1,0 +1,19 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block index %}
+  
+
+<form method="post" id="formulario">
+    {% csrf_token %}
+    
+    {{form.as_p}}
+   
+   
+       <button class="btn btn-primary" type="submit">Guardar</button>
+   
+   
+   </form>
+
+   {% endblock index %}

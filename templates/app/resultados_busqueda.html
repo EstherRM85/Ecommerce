@@ -1,0 +1,56 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block index %}
+
+<div id="tavlaun" class="card">
+  <div class="card-header">
+    <strong class="card-title">Listado de Productos</strong>
+  </div>
+  <div class="table-stats order-table ov-h">
+    <table class="table">
+      <thead>
+       <thead>
+          <tr>
+
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+
+    
+    <p>Estas buscando: <strong>{{query}}</strong></p>
+    
+    {% if articulos %}
+
+        <p>Articulos Encontrados:{{articulos|length}} articulos</p>
+        
+            
+            {% for articulo in articulos %} 
+                <tr>
+                <td>{{ articulo.nombre }}</td>
+                <td>{{ articulo.descripcion}}</td>
+                <td>{{ articulo.precio }}</td>
+                <td><img class="imagep" src="{% static articulo.image.url  %}"></td>
+                  </td>
+            </tr>
+            {% endfor %}
+           
+    {% else %}
+
+        <p>Articulo no Encontrado</p>
+
+    {% endif %}
+
+</tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock index %}
+</body>
+</html>
